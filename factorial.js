@@ -109,4 +109,16 @@ function collectionOddNumbers(array){
     return newArray;
 }
 
-console.log(collectionOddNumbers([1,2,3,4,5,6,7,8,9]));
+// console.log(collectionOddNumbers([1,2,3,4,5,6,7,8,9]));
+
+
+// console.log(typeof(typeof(true)))
+
+// operators
+console.log(-0||0); //return the true value so 0
+console.log(4 && 3); // return the true and true value so 3
+console.log(5 && 0); // return the 0 false value and operator returns it.
+console.log(5 || 0); // return the 5 true value it will return.
+console.log(0 || 14); // return true value and first value 4
+console.log(0 && 53); //return 0 false value
+console.log(4 && +0); //return 0 becuase of -4 is the true value
