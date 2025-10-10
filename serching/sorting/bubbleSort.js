@@ -1,5 +1,8 @@
 const array = [7, 1, 2, 3, 4, 5, 6];
 
+// comparing two value which is the biggest value move to the end of the array and if the small keep same 
+// place only
+
 function bubble(array) {
   for (let i = 0; i < array.length; i++) {
     let noSwap = false;
