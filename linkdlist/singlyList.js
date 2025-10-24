@@ -1,56 +1,93 @@
 class Node {
-    constructor(val) {
-        this.val = val;
-        this.next = null
-    }
+  constructor(val) {
+    this.val = val;
+    this.next = null;
+  }
 }
 
 class SinglyLinkdList {
-    constructor(){
-        this.head = null;
-        this.tail = null;
-        this.length = 0;
+  constructor() {
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
+  }
+  push(value) {
+    const newNode = new Node(value);
+    if (this.head === null) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      this.tail.next = newNode;
+      this.tail = newNode;
     }
-    push(value){
-        const newNode = new Node(value);
-        if (this.head === null) {
-            this.head = newNode;
-            this.tail = newNode;
-        }else{
-            this.tail.next = newNode;
-            this.tail = newNode;
-        }
-        this.length++;
-        return this;
-    }
-    // traversal(){
-    //     let current = this.head;
-    //     while(current !==null){
-    //         console.log(current.val);
-    //         current = current.next;
-    //     }
-    // }
+    this.length++;
+    return this;
+  }
+  // traversal(){
+  //     let current = this.head;
+  //     while(current !==null){
+  //         console.log(current.val);
+  //         current = current.next;
+  //     }
+  // }
 
-    pop(){
-        if(this.head === null){
-            return undefined;
-        }
-        let current = this.head;
-        let nextTail = current;
-        while(current.next !== null){
-            nextTail = current;
-            current = current.next;
-        }
-        this.tail = nextTail;
-         this.tail.next = null;
-        this.length--;
-        if(this.length ===0){
-            this.tail = null;
-            this.head = null;
-        }
-       
-        return current;
+  pop() {
+    if (this.head === null) {
+      return undefined;
     }
+    let current = this.head;
+    let nextTail = current;
+    while (current.next !== null) {
+      nextTail = current;
+      current = current.next;
+    }
+    this.tail = nextTail;
+    this.tail.next = null;
+    this.length--;
+    if (this.length === 0) {
+      this.tail = null;
+      this.head = null;
+    }
+
+    return current;
+  }
+
+  shift() {
+    let temp = this.head;
+    let header = this.head;
+    if (!this.head) {
+      return undefined;
+    }
+    this.head = temp.next;
+    this.length--;
+    return header;
+  }
+
+  unshift(val) {
+    let newNode = new Node(val);
+    let oldHead = this.head;
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      newNode.next = oldHead;
+      this.head = newNode;
+      this.length++;
+    }
+    return this;
+  }
+  getById(val){
+    if(val < 0 && val > this.length){
+        return null;
+    }
+    let temp = this.head;
+    let count = 0;
+    while(count !==val){
+        temp = temp.next;
+        count++;
+    }
+    return temp.val;
+  }
 }
 
 // let first = new Node("Hi");
@@ -59,8 +96,13 @@ class SinglyLinkdList {
 // first.next.next.next = new Node("There");
 
 let lists = new SinglyLinkdList();
-lists.push("sangamesh");
-lists.push("lingshetty");
-lists.push("sedol");
-lists.pop();
-console.log(lists);
+lists.push(22);
+lists.push(34);
+lists.push(344);
+lists.push(45);//add the element in last position...
+// lists.pop(); //remove the value in the last position...
+// lists.shift(); //delete the first value.
+lists.unshift(56);
+lists.unshift(556); //adding the value in the first...
+lists.getById(3);
+console.log(lists.getById(2));
