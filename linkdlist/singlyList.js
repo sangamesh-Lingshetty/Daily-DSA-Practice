@@ -76,17 +76,50 @@ class SinglyLinkdList {
     }
     return this;
   }
-  getById(val){
-    if(val < 0 && val > this.length){
-        return null;
+  getById(val) {
+    if (val < 0 && val > this.length) {
+      return null;
     }
     let temp = this.head;
     let count = 0;
-    while(count !==val){
-        temp = temp.next;
-        count++;
+    while (count !== val) {
+      temp = temp.next;
+      count++;
     }
-    return temp.val;
+    return temp;
+  }
+
+  replaceByIndex(index, val) {
+    let foundIndex = this.getById(index);
+    if (foundIndex) {
+      foundIndex.val = val;
+      return true;
+    }
+    return false;
+  }
+  insert(index, value) {
+    let temp = this.head;
+    let newNode = new Node(value);
+    let prev = null;
+    let count = 0;
+
+    if(index ===0){
+      newNode.next = this.head;
+      this.head = newNode;
+      this.length++;
+      return this.newNode;
+    }
+
+    while (count < index && temp !== null) {
+      prev = temp;
+      temp = temp.next;
+      count++;
+    }
+
+    prev.next = newNode;
+    newNode.next = temp;
+    this.length++;
+    return newNode;
   }
 }
 
@@ -99,10 +132,12 @@ let lists = new SinglyLinkdList();
 lists.push(22);
 lists.push(34);
 lists.push(344);
-lists.push(45);//add the element in last position...
+lists.push(45); //add the element in last position...
 // lists.pop(); //remove the value in the last position...
-// lists.shift(); //delete the first value.
+// lists.shift(); //delete the first value......
 lists.unshift(56);
-lists.unshift(556); //adding the value in the first...
+lists.unshift(556); //adding the value in the first.....
 lists.getById(3);
-console.log(lists.getById(2));
+lists.replaceByIndex(2, "SangameshLingshettyChandrakantha...");
+lists.insert(3,"PrabhuLingshetty.....");
+console.log(lists.getById(3));
