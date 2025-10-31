@@ -103,7 +103,7 @@ class SinglyLinkdList {
     let prev = null;
     let count = 0;
 
-    if(index ===0){
+    if (index === 0) {
       newNode.next = this.head;
       this.head = newNode;
       this.length++;
@@ -120,6 +120,24 @@ class SinglyLinkdList {
     newNode.next = temp;
     this.length++;
     return newNode;
+  }
+
+  remove(index) {
+    if (index < 0) {
+      return null;
+    }
+    let prev = this.head;
+    let current = this.head;
+    let count = 0;
+    while (index > count) {
+      prev = current;
+      current = current.next;
+      count++;
+    }
+
+    prev.next = current.next;
+    this.length--;
+    return current;
   }
 }
 
@@ -139,5 +157,6 @@ lists.unshift(56);
 lists.unshift(556); //adding the value in the first.....
 lists.getById(3);
 lists.replaceByIndex(2, "SangameshLingshettyChandrakantha...");
-lists.insert(3,"PrabhuLingshetty.....");
-console.log(lists.getById(3));
+lists.insert(3, "PrabhuLingshetty.....");
+lists.remove(4);
+console.log(lists.remove(2));
