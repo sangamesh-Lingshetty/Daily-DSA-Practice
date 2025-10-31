@@ -139,6 +139,21 @@ class SinglyLinkdList {
     this.length--;
     return current;
   }
+
+  reverse(){
+    let prevvalue = null;
+    let currentvalue = this.head;
+    let nextvalue = null;
+
+    while(currentvalue != null){
+      nextvalue = currentvalue.next;
+      currentvalue.next = prevvalue;
+      prevvalue = currentvalue;
+      currentvalue = nextvalue;
+    }
+    this.head = prevvalue;
+    return this;
+  }
 }
 
 // let first = new Node("Hi");
@@ -159,4 +174,5 @@ lists.getById(3);
 lists.replaceByIndex(2, "SangameshLingshettyChandrakantha...");
 lists.insert(3, "PrabhuLingshetty.....");
 lists.remove(4);
-console.log(lists.remove(2));
+lists.reverse();
+console.log(lists.reverse());
