@@ -43,7 +43,7 @@ class singlyList{
 }
 
 let list = new singlyList();
-list
+
 
 
 // 21. Merge Two Sorted Lists — learn list merging
@@ -68,3 +68,7 @@ var mergeTwoLists = function(list1, list2) {
 
     return head.next;
 };
+
+
+//  141. Linked List Cycle — pointer speed logic detect the cycle of the linkdin list....
+
