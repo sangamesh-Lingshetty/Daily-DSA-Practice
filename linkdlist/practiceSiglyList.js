@@ -39,8 +39,32 @@ class singlyList{
         current = this.head;
         return this;
     }
+
 }
+
+let list = new singlyList();
+list
 
 
 // 21. Merge Two Sorted Lists — learn list merging
 // https://leetcode.com/problems/merge-two-sorted-lists/description/
+
+var mergeTwoLists = function(list1, list2) {
+    let head = new ListNode();//dummy node.
+    let newnode = head;
+    while(list1 !== null && list2 !== null){
+        if(list1.val < list2.val){
+            newnode.next = list1;
+             list1 = list1.next;
+        }else{
+            newnode.next = list2;
+             list2 = list2.next;
+        } 
+        newnode = newnode.next;//move the value for the next items.
+    }
+
+    if(list1 !== null) newnode.next = list1;
+    if(list2 !== null) newnode.next = list2;
+
+    return head.next;
+};
