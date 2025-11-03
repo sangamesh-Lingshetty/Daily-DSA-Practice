@@ -51,6 +51,27 @@ class singlyList {
     return false;
   }
 
+  nthDelete(n){
+    let fast = this.head;
+    let slow = this.head;
+    let index = 0;
+
+    while(index !== n){
+      fast = fast.next;
+      index++;
+    }
+
+    while(fast.next !==null){
+      fast = fast.next;
+      slow = slow.next;
+    }
+
+    slow.next = slow.next.next;
+
+    return this;
+    
+  }
+
   print() {
     let current = this.head;
 
@@ -63,10 +84,12 @@ class singlyList {
 }
 
 let list = new singlyList();
-list.addValue(23);
-list.addValue(24);
-list.addValue(25);
-list.addValue(26);
+list.addValue(10);
+list.addValue(20);
+list.addValue(30);
+list.addValue(40);
+list.addValue(50);
+list.nthDelete(3);
 // list.createCycle(1);
-console.log(list.detect());
+// console.log(list.detect());
 console.log(list.print());
