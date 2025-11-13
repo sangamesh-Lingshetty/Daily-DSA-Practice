@@ -140,6 +140,16 @@ class SinglyLinkdList {
     return current;
   }
 
+  print(){
+    let stack = [];
+    let current = this.head;
+    while(current){
+      stack.push(current.val);
+      current = current.next;
+    }
+    return stack;
+  }
+
   reverse(){
     let prevvalue = null;
     let currentvalue = this.head;
@@ -171,8 +181,9 @@ lists.push(45); //add the element in last position...
 lists.unshift(56);
 lists.unshift(556); //adding the value in the first.....
 lists.getById(3);
-lists.replaceByIndex(2, "SangameshLingshettyChandrakantha...");
-lists.insert(3, "PrabhuLingshetty.....");
+lists.replaceByIndex(2, -0);
+lists.insert(3, "sangu");
 lists.remove(4);
 lists.reverse();
 console.log(lists.reverse());
+console.log(lists.print());
