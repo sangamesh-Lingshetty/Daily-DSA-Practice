@@ -82,7 +82,7 @@ class doublyLinkdList {
   }
 
   getItem(index) {
-   
+    if(index < 0) return null;
     let midvalue = this.length / 2;
     if (midvalue > index) {
       let current = this.head;
@@ -97,6 +97,28 @@ class doublyLinkdList {
       }
       return current;
     }
+  }
+  set(index,value){
+    let foundNode = this.getItem(index);
+    if(foundNode !== null){
+      foundNode.val = value;
+      return true;
+    }
+    return false;
+  }
+
+  add(index,value){
+    let newNode = new Node(value);
+    let prevNode = this.getItem(index-1);
+    if(index ==0) this.unshift(value);
+    if(index == this.length) this.insert(value);
+    if(prevNode){
+      newNode.next = prevNode.next;
+      prevNode.next = newNode;
+      newNode.prev = prevNode;
+    }
+    
+    return this;
   }
 }
 
@@ -115,5 +137,8 @@ values.insert(800);
 // values.pop();
 // values.shift() remove from the first value...
 // values.unshift(0); //add the from the biggining....
-
-console.log(values.getItem(4));
+// values.getItem(4)
+// values.set(-10,"sangamesh")
+values.add(0,"Boss");
+// console.log(values.set(0,"sangamesh"));
+console.log(values);
