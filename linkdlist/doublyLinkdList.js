@@ -82,42 +82,48 @@ class doublyLinkdList {
   }
 
   getItem(index) {
-    if(index < 0) return null;
+    if (index < 0) return null;
     let midvalue = this.length / 2;
     if (midvalue > index) {
       let current = this.head;
-      for(let i =0;i<index;i++){
+      for (let i = 0; i < index; i++) {
         current = current.next;
       }
       return current;
     } else {
       let current = this.tail;
-      for(let i =this.length -1;i>0;i--){
+      for (let i = this.length - 1; i > 0; i--) {
         current = current.prev;
       }
       return current;
     }
   }
-  set(index,value){
+  set(index, value) {
     let foundNode = this.getItem(index);
-    if(foundNode !== null){
+    if (foundNode !== null) {
       foundNode.val = value;
       return true;
     }
     return false;
   }
 
-  add(index,value){
-    let newNode = new Node(value);
-    let prevNode = this.getItem(index-1);
-    if(index ==0) this.unshift(value);
-    if(index == this.length) this.insert(value);
-    if(prevNode){
-      newNode.next = prevNode.next;
-      prevNode.next = newNode;
-      newNode.prev = prevNode;
+  add(index, value) {
+    if (index == 0) {
+      this.unshift(value);
     }
-    
+    if (index == this.length) {
+      return this.insert(value);
+    }
+
+    let prevNode = this.getItem(index - 1);
+    let newNode = new Node(value);
+    let nextNode = prevNode.next;
+
+    prevNode.next = newNode;
+    newNode.prev = prevNode;
+    nextNode.prev = newNode;
+    newNode.next = nextNode;
+    this.length++;
     return this;
   }
 }
@@ -139,6 +145,6 @@ values.insert(800);
 // values.unshift(0); //add the from the biggining....
 // values.getItem(4)
 // values.set(-10,"sangamesh")
-values.add(0,"Boss");
+values.add(0, "Boss");
 // console.log(values.set(0,"sangamesh"));
 console.log(values);
