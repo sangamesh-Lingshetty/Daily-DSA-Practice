@@ -37,6 +37,7 @@ class doublyLinkdList {
   }
 
   pop() {
+    //remove the last element
     let removedNode = this.tail;
     if (!this.head) return null || undefined;
     if (this.length === 1) {
@@ -68,6 +69,7 @@ class doublyLinkdList {
   }
 
   unshift(value) {
+    //add the first index value
     let newnode = new Node(value);
     if (!this.head) {
       this.head = newnode;
@@ -99,6 +101,7 @@ class doublyLinkdList {
     }
   }
   set(index, value) {
+    //replace the value based on the index value
     let foundNode = this.getItem(index);
     if (foundNode !== null) {
       foundNode.val = value;
@@ -108,6 +111,7 @@ class doublyLinkdList {
   }
 
   add(index, value) {
+    //add the value based on the index needed.
     if (index == 0) {
       this.unshift(value);
     }
@@ -125,6 +129,24 @@ class doublyLinkdList {
     newNode.next = nextNode;
     this.length++;
     return this;
+  }
+
+  remove(index) {
+    //remove the value from based on the index needed.
+
+    if (index < 0) return null;
+    if (index == 0) return this.shift();
+    if (index == this.length - 1) return this.pop();
+    let foundIndex = this.getItem(index);
+    if (!foundIndex) return null;
+    let prevNode = foundIndex.prev;
+    let nextNode = foundIndex.next;
+    prevNode.next = nextNode;
+    nextNode.prev = prevNode;
+    foundIndex.next = null;
+    foundIndex.prev = null;
+    this.length--;
+    return foundIndex;
   }
 }
 
@@ -145,6 +167,7 @@ values.insert(800);
 // values.unshift(0); //add the from the biggining....
 // values.getItem(4)
 // values.set(-10,"sangamesh")
-values.add(0, "Boss");
+// values.add(0, "Boss");
 // console.log(values.set(0,"sangamesh"));
-console.log(values);
+// values.remove(2);
+console.log(values.remove(2));
