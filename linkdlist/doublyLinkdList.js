@@ -148,10 +148,26 @@ class doublyLinkdList {
     this.length--;
     return foundIndex;
   }
+
+  reverse(){
+    let current = this.head;
+    let temp = null;
+    while(current !== null){
+      temp = current.prev;
+      current.prev = current.next;
+      current.next = temp;
+      current = current.prev; //move the next node.we have to go the prev next is null.
+    }
+
+    if(temp !==null){
+      this.head = temp.prev
+    }
+    return this;
+  }
 }
 
-// 10 -> 100 -> 200
-//<-
+// 123 -> 100 -> 200 -> 300 -> 400 ->500
+ 
 const values = new doublyLinkdList();
 values.insert(123);
 values.insert(100);
@@ -170,4 +186,5 @@ values.insert(800);
 // values.add(0, "Boss");
 // console.log(values.set(0,"sangamesh"));
 // values.remove(2);
-console.log(values.remove(2));
+// values.reverse();
+console.log(values.reverse());
