@@ -25,8 +25,18 @@ class MaxBinaryHeap {
       }
     }
   }
+
+  remove(){
+    const popup = this.value.shift();
+    const lastValue = this.value.pop();
+
+    this.value[0] = lastValue;
+    while(lastValue )
+    return popup;
+  }
 }
 
 const heap = new MaxBinaryHeap();
-heap.insert(55);
+// heap.insert(55);
+heap.remove();
 console.log(heap);
